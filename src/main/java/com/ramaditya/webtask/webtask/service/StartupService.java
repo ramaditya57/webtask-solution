@@ -24,6 +24,11 @@ public class StartupService implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        // 🚫 Prevent command line input during Maven build
+        if (System.getProperty("skip.startup") != null) {
+            return;
+        }
+
         Scanner scanner = new Scanner(System.in);
 
         // 🔹 Ask user for input
